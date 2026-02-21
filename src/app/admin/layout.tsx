@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   CalendarDays,
@@ -84,17 +84,7 @@ function SidebarContent({ pathname, onNavigate }: { pathname: string; onNavigate
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  // 認証チェック無効化（開発中）
-  // useEffect(() => {
-  //   if (pathname === "/admin/login") return;
-  //   const hasSession = document.cookie.split(";").some((c) => c.trim().startsWith("admin_session="));
-  //   if (!hasSession) {
-  //     router.push("/admin/login");
-  //   }
-  // }, [pathname, router]);
 
   // Don't render sidebar on login page
   if (pathname === "/admin/login") {
